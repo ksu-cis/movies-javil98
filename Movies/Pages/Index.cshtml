@@ -4,9 +4,9 @@
     ViewData["Title"] = "Home page";
 }
 
-
-<div id="container">
     <h1>Movies</h1>
+<div id="container">
+    
     <div id="results">
         @foreach (Movie movie in Model.Movies)
         {
@@ -27,34 +27,48 @@
         }
     </div>
     <form method="post">
-        <input type="text" name="search" id="search" />
+        <input type="text" name="search" id="search" value=" @Model.search" />
+
         <input type="submit" value="Search" />
-        <h2> MPAA Rating</h2>
+
+        <h4> MPAA Rating</h4>
         <div class="checkbox-list">
             <label>
-                <input type="checkbox" name="rating" value="G" />
+                <input type="checkbox" name="rating" value="G" checked= "@Model.mpaa.Contains("G")" />
                 Rated G
             </label>
 
             <label>
-                <input type="checkbox" name="rating" value="PG" />
+                <input type="checkbox" name="rating" value="PG" checked="@Model.mpaa.Contains("PG")" />
                 Rated PG
             </label>
 
             <label>
-                <input type="checkbox" name="rating" value="PG-13" />
+                <input type="checkbox" name="rating" value="PG-13" checked="@Model.mpaa.Contains("PG-13")" />
                 Rated PG-13
             </label>
 
             <label>
-                <input type="checkbox" name="rating" value="R" />
+                <input type="checkbox" name="rating" value="R" checked="@Model.mpaa.Contains("R")" />
                 Rated R
             </label>
 
             <label>
-                <input type="checkbox" name="rating" value="NC-17" />
+                <input type="checkbox" name="rating" value="NC-17" checked="@Model.mpaa.Contains("NC-17")" />
                 Rated NC-17
             </label>
+            <br />
+            <label>
+                Minimum IMDB Rating:
+                <input type ="number" min="0" max="10" step="0.1" name="minIMBD" />
+            </label>
+
+            <br/>
+            <label>
+                Maximum IMDB Rating:
+                <input type="number" min="0" max="10" step="0.1" name="maxIMDB" />
+            </label>
+           
         </div>
     </form>
 </div>
