@@ -38,8 +38,6 @@ namespace Movies.Pages
             if(search != null)
             {
                 Movies = MovieDatabase.Search(Movies, search);
-
-
             }
             if(mpaa.Count != 0)
             {
